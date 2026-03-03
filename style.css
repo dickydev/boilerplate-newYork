@@ -1,0 +1,252 @@
+/* ============================= */
+/* 1️⃣ RESET */
+/* ============================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* ============================= */
+/* 2️⃣ VARIABLES */
+/* ============================= */
+
+:root {
+  --primary: #6366f1;
+  --dark: #111827;
+  --light: #f9fafb;
+  --text: #374151;
+
+  --radius: 12px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 60px;
+}
+
+/* ============================= */
+/* UTILITIES */
+/* ============================= */
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================= */
+/* NAVBAR */
+/* ============================= */
+
+.navbar {
+  padding: var(--spacing-md) 0;
+}
+
+.navbar__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.navbar__menu {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: var(--text);
+  position: relative;
+}
+
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: 0.3s;
+}
+
+.navbar__link:hover::after {
+  width: 100%;
+}
+
+/* ============================= */
+/* HERO + PARALLAX */
+/* ============================= */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: white;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://picsum.photos/1920/1080");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* 🔥 PARALLAX */
+}
+
+.hero__title {
+  font-size: 42px;
+  margin-bottom: var(--spacing-md);
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero__text {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: var(--spacing-lg);
+  animation: fadeUp 1.4s ease forwards;
+}
+
+/* ============================= */
+/* FEATURES (GRID) */
+/* ============================= */
+
+.features {
+  padding: var(--spacing-lg) 0;
+  background: var(--light);
+}
+
+.features__grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.feature-card {
+  background: white;
+  padding: var(--spacing-md);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+.feature-card__icon {
+  font-size: 30px;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ============================= */
+/* IMAGE SECTION */
+/* ============================= */
+
+.image-section {
+  padding: var(--spacing-lg) 0;
+}
+
+.image-wrapper {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.1);
+}
+
+/* ============================= */
+/* PARALLAX SECTION 2 */
+/* ============================= */
+
+.parallax-section {
+  height: 400px;
+  background: url("https://picsum.photos/1920/900?blur=2");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 32px;
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+.footer {
+  background: var(--dark);
+  color: white;
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+/* ============================= */
+/* KEYFRAMES */
+/* ============================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (min-width: 768px) {
+  .hero__title {
+    font-size: 60px;
+  }
+
+  .features__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
